@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Fabio Soggia">
+    <link rel="stylesheet" href="./libs/vendors/bootstrap/bootstrap.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Roboto+Slab:wght@200;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./libs/css/style.css">
+    <title>Company Directory</title>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row">
+            <header class="col-12">
+                <div class="jumbotron jumbotron-fluid p-0">
+                    <span id="add" class="fas fa-plus text-white float-right"></span>
+                    <h1 class="display-4 text-white text-center">Fluid jumbotron</h1>
+                    <p class="lead text-white text-center">This is a modified jumbotron that occupies the entire
+                        horizontal
+                        space of its parent.
+                    </p>
+
+                </div>
+
+            </header>
+        </div>
+        <main>
+            <div class="row flex-wrap flex-sm-nowrap">
+                <!-- filter navbar -->
+                <div class="col-1 col-sm-2">
+                    <section>
+
+                        <div class="row">
+                            <form id="filter"
+                                class="shadow-lg nav flex-column navbar navbar-expand-md justify-content-start"
+                                action="#" method="GET">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#filterNav" aria-controls="filterNav" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="fas fa-filter"></span>
+                                </button>
+                                <div class="collapse navbar-collapse flex-wrap" id="filterNav">
+                                    <section id="location" class="col-12">
+                                        <h5>Location</h5>
+                                        <input type="checkbox" name="location" id="London" value="London">
+                                        <label for="London">London</label> <br>
+                                        <input type="checkbox" name="location" id="New York" value="New York">
+                                        <label for="New York">New York</label> <br>
+                                        <input type="checkbox" name="location" id="Paris" value="Paris">
+                                        <label for="Paris">Paris</label> <br>
+                                        <input type="checkbox" name="location" id="Munich" value="Munich">
+                                        <label for="Munich">Munich</label><br>
+                                        <input type="checkbox" name="location" id="Rome" value="Rome">
+                                        <label for="Rome">Rome</label>
+                                    </section>
+                                    <section class="col-12">
+                                        <h5>Department</h5>
+                                        <input type="checkbox" name="department" id="Human Resources"
+                                            value="1">
+                                        <label for="Human Resources">HR</label> <br>
+                                        <input type="checkbox" name="department" id="Sales" value="2">
+                                        <label for="Sales">Sales</label> <br>
+                                        <input type="checkbox" name="department" id="Marketing" value="3">
+                                        <label for="Marketing">Marketing</label> <br>
+                                        <input type="checkbox" name="department" id="Legal" value="4">
+                                        <label for="Legal">Legal</label><br>
+                                        <input type="checkbox" name="department" id="Services" value="5">
+                                        <label for="Services">Services</label><br>
+                                        <input type="checkbox" name="department" id="Research and Development"
+                                            value="6">
+                                        <label for="Research and Development">R&D</label><br>
+                                        <input type="checkbox" name="department" id="Product Management"
+                                            value="7">
+                                        <label for="Product Management">PM</label><br>
+                                        <input type="checkbox" name="department" id="Training" value="8">
+                                        <label for="Training">Training</label><br>
+                                        <input type="checkbox" name="department" id="Support" value="9">
+                                        <label for="Support">Support</label><br>
+                                        <input type="checkbox" name="department" id="Engineering" value="10">
+                                        <label for="Engineering">Engineering</label><br>
+                                        <input type="checkbox" name="department" id="Accounting" value="11">
+                                        <label for="Accounting">Accounting</label><br>
+                                        <input type="checkbox" name="department" id="Businness Development"
+                                            value="12">
+                                        <label for="Businness Development">Services</label> <br>
+
+                                        <input type="submit" value="Submit" class="btn-success">
+                                    </section>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-11 col-sm-10">
+                    <section>
+
+                        <div class="row ">
+                            <section id="search" class="col-12 d-flex justify-content-center">
+                                <form action="#">
+                                    <input class="form-control searchbar shadow-lg" type="text" placeholder="Search.."
+                                        name="search">
+                                </form>
+                                <button id="sort" type="button" class="btn btn-primary"><i
+                                        class="fas fa-sort-amount-down-alt"></i></button>
+                            </section>
+                        </div>
+
+                        
+                            <div id="main" class="row justify-content-center justify-content-lg-around">
+                                <!-- <div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+                                    <div class="row justify-content-between">
+                                        <i class="fas fa-trash-alt "></i>
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 id="name" class="card-title">Card title</h5>
+                                        <p id="location" class="card-text">
+                                        </p>
+                                        <p id="department"></p>
+                                        <a href="" id="email"></a>
+                                    </div>
+                                </div>
+                                <div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+                                    <div class="row justify-content-between">
+                                        <i class="fas fa-trash-alt "></i>
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the
+                                            card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                                <div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+                                    <div class="row justify-content-between">
+                                        <i class="fas fa-trash-alt "></i>
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the
+                                            card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                                <div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+                                    <div class="row justify-content-between">
+                                        <i class="fas fa-trash-alt "></i>
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the
+                                            card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                                <div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+                                    <div class="row justify-content-between">
+                                        <i class="fas fa-trash-alt "></i>
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the
+                                            card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        
+
+                    </section>
+                </div>
+            </div>
+    </div>
+    </div>
+
+
+    </main>
+
+    <script src="./libs/vendors/jquery-2.2.3.min.js"></script>
+    <script src="./libs/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="./libs/vendors/all.min.js"></script>
+    <script src="./libs/js/script.js"></script>
+</body>
+
+</html>

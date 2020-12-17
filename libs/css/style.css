@@ -1,0 +1,47 @@
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+.jumbotron {
+    background: url('../../office.jpg') center;
+    background-size: cover;
+    height: 60vh;
+}
+
+#filter {
+    background: #6aa1d9;
+    position: relative;
+    bottom: 6.5vh;
+    z-index: 1;
+}
+
+#add {
+    font-size: 1.5em;
+}
+
+#search {
+
+    position: relative;
+    bottom: 6.5vh;
+    z-index: 1;
+}
+
+.searchbar {
+    height: 48px;
+    width: 35vw;
+}
+
+ #sort {
+    height: 48px;
+    width: auto;
+    background: #6aa1d9;
+} 
+
+.card {
+    border-color: #6aa1d9;
+}
+
+
+
+
+
