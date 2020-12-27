@@ -1,18 +1,17 @@
 <?php
 
-	// example use from browser
-	// http://localhost/companydirectory/libs/php/getAll.php
 
-	// remove next two lines for production
+	// example use from browser
+	// http://localhost/companydirectory/libs/php/getDepartmentByID.php?id=2
 	
-	// ini_set('display_errors', 'On');
-	// error_reporting(E_ALL);
+	// remove next two lines for production
+
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
 	include("config.php");
-
-	header('Content-Type: application/json; charset=UTF-8');
 
 	$conn = new mysqli($cd_host, $cd_user, $cd_password, $cd_dbname, $cd_port, $cd_socket);
 
@@ -23,16 +22,24 @@
 		$output['status']['description'] = "database unavailable";
 		$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 		$output['data'] = [];
-
+		
 		mysqli_close($conn);
 
-		echo json_encode($output);
+		echo json_encode($output); 
 
 		exit;
 
 	}	
 
-	$query = 'SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) ORDER BY p.lastName, p.firstName, d.name, l.name';
+	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+
+    //loop through REQUEST to retrieve multiple IDs??
+	$query = 'SELECT p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location 
+	            FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID)
+                 WHERE LOWER(p.lastName) LIKE LOWER("%' . $_REQUEST['name'] . '%")
+                 OR LOWER(p.firstName) LIKE LOWER("%' . $_REQUEST['name'] . '%")
+                  ORDER BY p.lastName, p.firstName, d.name, l.name';
+
 
 	$result = $conn->query($query);
 	
@@ -64,6 +71,8 @@
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = $data;
+
+	header('Content-Type: application/json; charset=UTF-8');
 	
 	mysqli_close($conn);
 

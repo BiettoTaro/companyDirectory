@@ -1,12 +1,12 @@
 <?php
 
 	// example use from browser
-	// http://localhost/companydirectory/libs/php/getAll.php
+	// http://localhost/companydirectory/libs/php/insertDepartment.php?name=New%20Department&locationID=1
 
 	// remove next two lines for production
 	
-	// ini_set('display_errors', 'On');
-	// error_reporting(E_ALL);
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -32,7 +32,16 @@
 
 	}	
 
-	$query = 'SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) ORDER BY p.lastName, p.firstName, d.name, l.name';
+    // $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+    
+    $firstName = $_REQUEST['firstName'];
+    $lastName = $_REQUEST['lastName'];
+    $jobTitle= $_REQUEST['jobTitle'];
+    $email= $_REQUEST['email'];
+    $departmentID= $_REQUEST['departmentID'];
+
+	$query = "INSERT INTO personnel (firstName, lastName, jobTitle, email, departmentID)
+              VALUES('$firstName', '$lastName', '$jobTitle', '$email', '$departmentID')";
 
 	$result = $conn->query($query);
 	
@@ -50,20 +59,12 @@
 		exit;
 
 	}
-   
-   	$data = [];
-
-	while ($row = mysqli_fetch_assoc($result)) {
-
-		array_push($data, $row);
-
-	}
 
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = $data;
+	$output['data'] = [];
 	
 	mysqli_close($conn);
 
