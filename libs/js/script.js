@@ -1,7 +1,7 @@
 
 const card = (id, firstName, lastName, location, department, email) => {
     return (`
-<div class="card m-1 col-6 col-md-4 col-lg-3 col-xl-2 shadow " style="width: 18rem;">
+<div class=" card m-1  col-xl-2 shadow " style="width: 18rem;">
                 <div class="row justify-content-between">
                     <span class="deleteBtn"><i class="fas fa-trash-alt "></i></span>
                     <span class="editBtn"><i id="" class="fas fa-edit"></i></span>
@@ -17,42 +17,18 @@ const card = (id, firstName, lastName, location, department, email) => {
             </div>`);
 };
 
-const getDepartmentId = department => {
-    switch (department) {
-        case 'Human Resources':
-            return 1;
-        case 'Sales':
-            return 2;
-        case 'Marketing':
-            return 3;
-        case 'Legal':
-            return 4;
-        case 'Services':
-            return 5;
-        case 'Research and Development':
-            return 6;
-        case 'Product Management':
-            return 7;
-        case 'Training':
-            return 8;
-        case 'Support':
-            return 9;
-        case 'Engineering':
-            return 10;
-        case 'Accounting':
-            return 11;
-        case 'Businness Development':
-            return 12;
-        default:
-            alert('insert valid department')
-    }
-}
 
 
 
 
 
 $(document).ready(function () {
+
+    $(window).scroll(function(){  
+        const  $nav = $("#navbar");
+        const  $jumbo = $(".jumbotron");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $jumbo.height());  
+    })
     
     $('#add').click(function(){
         $('#create').show()
@@ -66,9 +42,94 @@ $(document).ready(function () {
                         };
                     };
         })
+
+        $('#addDep').click(function(){
+            $('#createDep').show()
+                        $('.close').click(function () {
+                            $('#createDep').hide();
+                        });
+    
+                        window.onclick = function (event) {
+                            if (event.target == $('#createDep')) {
+                                $('#createDep').hide();
+                            };
+                        };
+            })
    
 
     $(window).ready(function () {
+
+        $.ajax({
+            url: './libs/php/getAllDepartments.php',
+            type: 'post',
+            dataType: 'json',
+            success: function(result) {
+                console.log(result)
+                result.data.forEach(element => {
+
+                    $('#depMenu').append(`<span class="depID">${element.id}</span><li class="pb-3 editDep">${element.name}</li><span class="locID">${element.locationID}</span>`)
+
+                
+                });
+
+                $('.editDep').click(event => {
+
+                   $('#updateDep').show()
+                   $('.close').click(function () {
+                    $('#updateDep').hide();
+                });
+
+                window.onclick = function (event) {
+                    if (event.target == $('#updateDep')) {
+                        $('#updateDep').hide();
+                    };
+                };
+
+                $('#depID').val($(event.currentTarget).prev().html())
+                $('#UdepName').val($(event.currentTarget).html())
+                $('#UdepLocation').val($(event.currentTarget).next().html())
+
+
+                });
+                
+                $('#updateDepBtn').click(function(){
+                    console.log($('#UdepName').val())
+                    console.log($('#UdepLocation').val())
+                    console.log($('#depID').val())
+                    $.ajax({
+                        url: './libs/php/updateDepartment.php',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            name: $('#UdepName').val(),
+                            locID: $('#UdepLocation').val(),
+                            id: $('#depID').val()
+                        },
+                        success: function(result) {
+                            console.log(result)
+                            $('#updateDep').hide();
+                // alert('Data updated successfully !');
+                // location.reload();
+                        }
+                        
+                    })
+                })
+            } 
+        });
+
+        $.ajax({
+            url: './libs/php/getAllLocations.php',
+            type: 'post',
+            dataType: 'json',
+            success: function(result) {
+                result.data.forEach(element => {
+
+                    $('#locMenu').append(`<li class="pb-3 editLoc">${element.name}</li>`)
+                });
+            }
+        })
+
+
         $.ajax({
             url: './libs/php/getAll.php',
             type: 'post',
@@ -153,7 +214,38 @@ console.log(result)
                 console.log(jqXHR);
             }
         });
-    })
+    });
+
+    $('#createDepBtn').click(function(){
+        $.ajax({
+            url: './libs/php/insertDepartment.php',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name: $('#depName').val(),
+                locationID: $('#depLocation').val()
+            },
+            success: function (result) {
+                
+                $('#createDep').hide();
+                if(result.status.code == 200){
+                    alert('Data updated successfully !');
+                    location.reload();
+                }
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // your error code
+                console.warn(jqXHR.responseText)
+                console.log(errorThrown);
+                console.log(textStatus);
+                console.log(jqXHR);
+            }
+        });
+    });
+
+   
 
     $('#update').click(function () {
         $.ajax({
@@ -163,7 +255,7 @@ console.log(result)
             data: {
                 firstName: $('#UfirstName').val(),
                 lastName: $('#UlastName').val(),
-                departmentID: getDepartmentId($('#Udepartment').val()),
+                departmentID: $('#Udepartment').val(),
                 email: $('#Uemail').val(),
                 id: $('#id').text()
             },

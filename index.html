@@ -18,24 +18,69 @@
         <div class="row">
             <header class="col-12">
                 <div class="jumbotron jumbotron-fluid p-0">
-                    <span id="add" class=" text-white float-right"><i class="fas fa-plus"></i></span>
-                    <h1 class="display-4 text-white text-center">Fluid jumbotron</h1>
-                    <p class="lead text-white text-center">This is a modified jumbotron that occupies the entire
-                        horizontal
-                        space of its parent.
-                    </p>
+                    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top flex-row-reverse">
+                        <span id="add" class=" text-white"><i class="fas fa-plus"></i></span>
+                        ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon "></span>
+                        </button>
 
+                        <div class="collapse navbar-collapse" id="navbarContent">
+
+
+                            <ul class="navbar-nav mr-auto pr-2">
+                                <li class="nav-item dropdown">
+                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
+                                        href="#" id="dropdownDep" role="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        Department
+                                    </button>
+                                    <div class="dropdown-menu ml-auto" aria-labelledby="dropdownDep">
+                                        <a id="addDep" class="dropdown-item text-white" href="#">Add</a>
+                                        <div class="dropdown-divider"></div>
+                                        <ul id="depMenu" class="menu">
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
+                                        href="#" id="dropdownLoc" role="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        Location
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownLoc">
+                                        <a class="dropdown-item text-white" href="#">Add</a>
+                                        <div class="dropdown-divider"></div>
+                                        <ul id="locMenu" class="menu"></ul>
+                                    </div>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                        </div>
                 </div>
 
-            </header>
-        </div>
-        <main>
-            <div class="row flex-wrap flex-sm-nowrap">
-                <!-- filter navbar -->
-                <div class="col-1 col-sm-2">
-                    <section>
 
-                        <div class="row">
+
+
+                </nav>
+        </div>
+
+        </header>
+    </div>
+    <main>
+        <div class="flex-wrap">
+            <!-- filter navbar -->
+
+            <section>
+
+                <!-- <div class="row">
                             <form id="filter"
                                 class="shadow-lg nav flex-column navbar navbar-expand-md justify-content-start"
                                 action="#" method="GET">
@@ -45,19 +90,7 @@
                                     <span class="fas fa-filter"></span>
                                 </button>
                                 <div class="collapse navbar-collapse flex-wrap" id="filterNav">
-                                    <section id="location" class="col-12">
-                                        <h5>Location</h5>
-                                        <input type="checkbox" name="location" id="London" value="London">
-                                        <label for="London">London</label> <br>
-                                        <input type="checkbox" name="location" id="New York" value="New York">
-                                        <label for="New York">New York</label> <br>
-                                        <input type="checkbox" name="location" id="Paris" value="Paris">
-                                        <label for="Paris">Paris</label> <br>
-                                        <input type="checkbox" name="location" id="Munich" value="Munich">
-                                        <label for="Munich">Munich</label><br>
-                                        <input type="checkbox" name="location" id="Rome" value="Rome">
-                                        <label for="Rome">Rome</label>
-                                    </section>
+                                    
                                     <section class="col-12">
                                         <h5>Department</h5>
                                         <input type="checkbox" name="department" id="Human Resources" value="1">
@@ -91,10 +124,10 @@
                                 </div>
                             </form>
                         </div>
-                    </section>
-                </div>
+                    </section> -->
 
-                <div class="col-11 col-sm-10">
+
+                <div class="">
                     <section>
 
                         <div class="row ">
@@ -110,106 +143,177 @@
 
 
                         <div id="main" class="row justify-content-center justify-content-lg-around">
-                            
+
                         </div>
 
 
                     </section>
                 </div>
-            </div>
-    </div>
-    </div>
-    <div id="create" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 id="id" class="modal-title">Create contact</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#">
-                        <label for="firstName">First Name</label>
-                        <input id="CfirstName" name="firstName" class="form-control" type="text">
-                        <label for="lastName">Last Name</label>
-                        <input id="ClastName" name="lastName" class="form-control" type="text">
-                        <label for="jobTitle">Job Title</label>
-                        <input id="jobTitle" name="jobTitle" class="form-control" type="text">
-                        <label for="department">Department</label>
-                        <select id="Cdepartment" name="department" class="form-control" type="text">
-                            <option value="1">Human Resources</option>
-                            <option value="2">Sales</option>
-                            <option value="3">Marketing</option>
-                            <option value="4">Legal</option>
-                            <option value="5">Services</option>
-                            <option value="6">Research and Development</option>
-                            <option value="7">Product Management</option>
-                            <option value="8">Training</option>
-                            <option value="9">Support</option>
-                            <option value="10">Engineering</option>
-                            <option value="11">Accounting</option>
-                            <option value="12">Businness Development</option>
-                        </select>
-                        <label for="email">email</label>
-                        <input id="Cemail" name="email" class="form-control" type="text">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="createBtn" type="button" class="btn btn-primary">Create contact</button>
+        </div>
+        </div>
+        </div>
+        <div id="create" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Create contact</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="firstName">First Name</label>
+                            <input id="CfirstName" name="firstName" class="form-control" type="text">
+                            <label for="lastName">Last Name</label>
+                            <input id="ClastName" name="lastName" class="form-control" type="text">
+                            <label for="jobTitle">Job Title</label>
+                            <input id="jobTitle" name="jobTitle" class="form-control" type="text">
+                            <label for="department">Department</label>
+                            <select id="Cdepartment" name="department" class="form-control" type="text">
+                                <option value="1">Human Resources</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Marketing</option>
+                                <option value="4">Legal</option>
+                                <option value="5">Services</option>
+                                <option value="6">Research and Development</option>
+                                <option value="7">Product Management</option>
+                                <option value="8">Training</option>
+                                <option value="9">Support</option>
+                                <option value="10">Engineering</option>
+                                <option value="11">Accounting</option>
+                                <option value="12">Businness Development</option>
+                            </select>
+                            <label for="email">email</label>
+                            <input id="Cemail" name="email" class="form-control" type="text">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="createBtn" type="button" class="btn btn-primary">Create contact</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="edit" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 id="id" class="modal-title">Edit contact</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#">
-                        <label for="firstName">First Name</label>
-                        <input id="UfirstName" name="firstName" class="form-control" type="text">
-                        <label for="lastName">Last Name</label>
-                        <input id="UlastName" name="lastName" class="form-control" type="text">
-                        <label for="location">Location</label>
-                        <input id="Ulocation" name="location" class="form-control" type="text">
-                        <label for="department">Department</label>
-                        <input id="Udepartment" name="department" class="form-control" type="text">
-                        <label for="email">email</label>
-                        <input id="Uemail" name="email" class="form-control" type=" text">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="update" type="button" class="btn btn-primary">Save changes</button>
-                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="delete" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete contact (<span id="deleteID"></span>)</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this contact?</p>
-                </div>
-                <div class="modal-footer">
-                    <button id="deleteBtn" type="button" class="btn btn-primary">Delete</button>
-                    <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <div id="createDep" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Add department</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="depName">Name</label>
+                            <input id="depName" name="depName" class="form-control" type="text">
+                            <label for="depLocation">Location</label>
+                            <select id="depLocation" name="depLocation" class="form-control" type="text">
+                                <option value="1">London</option>
+                                <option value="2">New York</option>
+                                <option value="3">Paris</option>
+                                <option value="4">Munich</option>
+                                <option value="5">Rome</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="createDepBtn" type="button" class="btn btn-primary">Create department</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div id="edit" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Edit contact</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="firstName">First Name</label>
+                            <input id="UfirstName" name="firstName" class="form-control" type="text">
+                            <label for="lastName">Last Name</label>
+                            <input id="UlastName" name="lastName" class="form-control" type="text">
+                            <label for="department">Department</label>
+                            <select id="Udepartment" name="department" class="form-control" type="text">
+                                <option value="1">Human Resources</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Marketing</option>
+                                <option value="4">Legal</option>
+                                <option value="5">Services</option>
+                                <option value="6">Research and Development</option>
+                                <option value="7">Product Management</option>
+                                <option value="8">Training</option>
+                                <option value="9">Support</option>
+                                <option value="10">Engineering</option>
+                                <option value="11">Accounting</option>
+                                <option value="12">Businness Development</option>
+                            </select>
+                            <label for="email">email</label>
+                            <input id="Uemail" name="email" class="form-control" type=" text">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="update" type="button" class="btn btn-primary">Save changes</button>
+                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="updateDep" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Edit department</h5>
+                        <span id="depID"></span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="UdepName">Name</label>
+                            <input id="UdepName" name="UdepName" class="form-control" type="text">
+                            <label for="UdepLocation">Location</label>
+                            <select id="UdepLocation" name="UdepLocation" class="form-control" type="text">
+                                <option value="1">London</option>
+                                <option value="2">New York</option>
+                                <option value="3">Paris</option>
+                                <option value="4">Munich</option>
+                                <option value="5">Rome</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteDepBtn" type="button" class="btn btn-primary">Delete department</button>
+                        <button id="updateDepBtn" type="button" class="btn btn-primary">Create department</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="delete" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete contact (<span id="deleteID"></span>)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this contact?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteBtn" type="button" class="btn btn-primary">Delete</button>
+                        <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
