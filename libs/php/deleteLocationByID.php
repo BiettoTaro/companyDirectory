@@ -34,13 +34,13 @@
 	}	
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
-$id = $_REQUEST['id'];
+    $id = $_REQUEST['id'];
 
-	$query = "DELETE from department WHERE id IN (SELECT departmentID
-	FROM personnel
-	WHERE departmentID = $id                               
-	GROUP BY departmentID
-	having count(departmentID) < 3)";
+	$query = "DELETE from location WHERE id IN (SELECT locationID
+	FROM department
+	WHERE locationID = $id                               
+	GROUP BY locationID
+	having count(locationID) < 1)";
 
 	$result = $conn->query($query);
 	

@@ -1,13 +1,12 @@
 <?php
 
 	// example use from browser
-	// use insertDepartment.php first to create new dummy record and then specify it's id in the command below
-	// http://localhost/companydirectory/libs/php/deleteDepartmentByID.php?id= <id>
+	// http://localhost/companydirectory/libs/php/getAll.php
 
 	// remove next two lines for production
 	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
+	// ini_set('display_errors', 'On');
+	// error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -32,15 +31,24 @@
 		exit;
 
 	}	
+	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
-$id = $_REQUEST['id'];
-
-	$query = "DELETE from department WHERE id IN (SELECT departmentID
-	FROM personnel
-	WHERE departmentID = $id                               
-	GROUP BY departmentID
-	having count(departmentID) < 3)";
+	$sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : false;
+    // validate the sort field (avoid Bobby Tables!) and provide default
+    switch ($sort) {
+		case 'p.firstName':
+		break;
+		case 'p.lastName':
+		break;
+		case 'department':
+		break;
+		case 'location':
+            break;
+        default:
+            $sort = 'id';
+    }
+	// $query = 'SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) ORDER BY p.lastName, p.firstName, d.name, l.name';
+	$query = "SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) ORDER BY $sort";
 
 	$result = $conn->query($query);
 	
@@ -58,12 +66,20 @@ $id = $_REQUEST['id'];
 		exit;
 
 	}
-	
+   
+   	$data = [];
+
+	while ($row = mysqli_fetch_assoc($result)) {
+
+		array_push($data, $row);
+
+	}
+
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = [];
+	$output['data'] = $data;
 	
 	mysqli_close($conn);
 

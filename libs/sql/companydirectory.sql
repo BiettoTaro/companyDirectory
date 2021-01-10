@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `departmentID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 -- Dumping data for table companydirectory.personnel: ~100 rows (approximately)
 /*!40000 ALTER TABLE `personnel` DISABLE KEYS */;
 INSERT INTO `personnel` (`id`, `firstName`, `lastName`, `jobTitle`, `email`, `departmentID`) VALUES

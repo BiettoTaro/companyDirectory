@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Fabio Soggia">
+    <link rel="shortcut icon" type="image/ico" sizes="32x32" href="./favicon_io CD/favicon.ico">
     <link rel="stylesheet" href="./libs/vendors/bootstrap/bootstrap.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Roboto+Slab:wght@200;400&display=swap"
@@ -19,16 +20,12 @@
             <header class="col-12">
                 <div class="jumbotron jumbotron-fluid p-0">
                     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top flex-row-reverse">
-                        <span id="add" class=" text-white"><i class="fas fa-plus"></i></span>
-                        ">
+                            <span id="add" class=" text-white"><i class="fas fa-plus"></i></span>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon "></span>
                         </button>
-
                         <div class="collapse navbar-collapse" id="navbarContent">
-
-
                             <ul class="navbar-nav mr-auto pr-2">
                                 <li class="nav-item dropdown">
                                     <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
@@ -44,6 +41,7 @@
                                         </ul>
                                     </div>
                                 </li>
+                                                                
                                 <li class="nav-item dropdown">
                                     <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
                                         href="#" id="dropdownLoc" role="button" data-toggle="dropdown"
@@ -51,104 +49,60 @@
                                         Location
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownLoc">
-                                        <a class="dropdown-item text-white" href="#">Add</a>
+                                        <a id="addLoc" class="dropdown-item text-white" href="#">Add</a>
                                         <div class="dropdown-divider"></div>
                                         <ul id="locMenu" class="menu"></ul>
                                     </div>
                                 </li>
-
-
-
-
                             </ul>
-
-
                         </div>
+                    </nav>
                 </div>
-
-
-
-
-                </nav>
+            </header>
         </div>
 
-        </header>
+
     </div>
     <main>
         <div class="flex-wrap">
-            <!-- filter navbar -->
 
             <section>
 
-                <!-- <div class="row">
-                            <form id="filter"
-                                class="shadow-lg nav flex-column navbar navbar-expand-md justify-content-start"
-                                action="#" method="GET">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#filterNav" aria-controls="filterNav" aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                    <span class="fas fa-filter"></span>
-                                </button>
-                                <div class="collapse navbar-collapse flex-wrap" id="filterNav">
-                                    
-                                    <section class="col-12">
-                                        <h5>Department</h5>
-                                        <input type="checkbox" name="department" id="Human Resources" value="1">
-                                        <label for="Human Resources">HR</label> <br>
-                                        <input type="checkbox" name="department" id="Sales" value="2">
-                                        <label for="Sales">Sales</label> <br>
-                                        <input type="checkbox" name="department" id="Marketing" value="3">
-                                        <label for="Marketing">Marketing</label> <br>
-                                        <input type="checkbox" name="department" id="Legal" value="4">
-                                        <label for="Legal">Legal</label><br>
-                                        <input type="checkbox" name="department" id="Services" value="5">
-                                        <label for="Services">Services</label><br>
-                                        <input type="checkbox" name="department" id="Research and Development"
-                                            value="6">
-                                        <label for="Research and Development">R&D</label><br>
-                                        <input type="checkbox" name="department" id="Product Management" value="7">
-                                        <label for="Product Management">PM</label><br>
-                                        <input type="checkbox" name="department" id="Training" value="8">
-                                        <label for="Training">Training</label><br>
-                                        <input type="checkbox" name="department" id="Support" value="9">
-                                        <label for="Support">Support</label><br>
-                                        <input type="checkbox" name="department" id="Engineering" value="10">
-                                        <label for="Engineering">Engineering</label><br>
-                                        <input type="checkbox" name="department" id="Accounting" value="11">
-                                        <label for="Accounting">Accounting</label><br>
-                                        <input type="checkbox" name="department" id="Businness Development" value="12">
-                                        <label for="Businness Development">Services</label> <br>
+                <div class="row ">
+                    <section id="search" class="col-12 d-flex justify-content-center">
+                        <form action="#">
+                            <input id="nameSearch" class="form-control searchbar shadow-lg" type="text"
+                                placeholder="Search name" name="search">
+                        </form>
+                        <div class="dropdown">
+                            <button id="sort" class="btn btn-primary fas fa-sort-amount-down dropdown-toggle"
+                                type="button" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
 
-                                        <input type="submit" value="Submit" class="btn-success">
-                                    </section>
-                                </div>
-                            </form>
-                        </div>
-                    </section> -->
-
-
-                <div class="">
-                    <section>
-
-                        <div class="row ">
-                            <section id="search" class="col-12 d-flex justify-content-center">
-                                <form action="#">
-                                    <input id="nameSearch" class="form-control searchbar shadow-lg" type="text"
-                                        placeholder="Search name" name="search">
-                                </form>
-                                <button id="sort" type="button" class="btn btn-primary"><i
-                                        class="fas fa-sort-amount-down-alt"></i></button>
-                            </section>
-                        </div>
-
-
-                        <div id="main" class="row justify-content-center justify-content-lg-around">
+                            </button>
+                            <div id="sortMenu" class="dropdown-menu" aria-labelledby="dropdownSort">
+                                <a id="sortByFirstName" class="dropdown-item" href="#" data-value="p.firstName">First
+                                    Name</a>
+                                <a id="sortByLastName" class="dropdown-item" href="#" data-value="p.lastName">Last
+                                    Name</a>
+                                <a id="sortByDepartment" class="dropdown-item" href="#"
+                                    data-value="department">Department</a>
+                                <a id="sortByLocation" class="dropdown-item" href="#" data-value="location">Location</a>
+                            </div>
 
                         </div>
-
 
                     </section>
                 </div>
+
+
+                <div id="main" class="row justify-content-center justify-content-lg-around">
+
+                </div>
+
+
+            </section>
+        </div>
         </div>
         </div>
         </div>
@@ -171,25 +125,14 @@
                             <input id="jobTitle" name="jobTitle" class="form-control" type="text">
                             <label for="department">Department</label>
                             <select id="Cdepartment" name="department" class="form-control" type="text">
-                                <option value="1">Human Resources</option>
-                                <option value="2">Sales</option>
-                                <option value="3">Marketing</option>
-                                <option value="4">Legal</option>
-                                <option value="5">Services</option>
-                                <option value="6">Research and Development</option>
-                                <option value="7">Product Management</option>
-                                <option value="8">Training</option>
-                                <option value="9">Support</option>
-                                <option value="10">Engineering</option>
-                                <option value="11">Accounting</option>
-                                <option value="12">Businness Development</option>
+
                             </select>
                             <label for="email">email</label>
                             <input id="Cemail" name="email" class="form-control" type="text">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id="createBtn" type="button" class="btn btn-primary">Create contact</button>
+                        <button id="createBtn" type="button" class="btn btn-success">Create contact</button>
                     </div>
                 </div>
             </div>
@@ -209,16 +152,33 @@
                             <input id="depName" name="depName" class="form-control" type="text">
                             <label for="depLocation">Location</label>
                             <select id="depLocation" name="depLocation" class="form-control" type="text">
-                                <option value="1">London</option>
-                                <option value="2">New York</option>
-                                <option value="3">Paris</option>
-                                <option value="4">Munich</option>
-                                <option value="5">Rome</option>
+
                             </select>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id="createDepBtn" type="button" class="btn btn-primary">Create department</button>
+                        <button id="createDepBtn" type="button" class="btn btn-success">Create department</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="createLoc" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Add department</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="locName">Name</label>
+                            <input id="locName" name="locName" class="form-control" type="text">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="createLocBtn" type="button" class="btn btn-success">Create Location</button>
                     </div>
                 </div>
             </div>
@@ -238,28 +198,16 @@
                             <input id="UfirstName" name="firstName" class="form-control" type="text">
                             <label for="lastName">Last Name</label>
                             <input id="UlastName" name="lastName" class="form-control" type="text">
-                            <label for="department">Department</label>
-                            <select id="Udepartment" name="department" class="form-control" type="text">
-                                <option value="1">Human Resources</option>
-                                <option value="2">Sales</option>
-                                <option value="3">Marketing</option>
-                                <option value="4">Legal</option>
-                                <option value="5">Services</option>
-                                <option value="6">Research and Development</option>
-                                <option value="7">Product Management</option>
-                                <option value="8">Training</option>
-                                <option value="9">Support</option>
-                                <option value="10">Engineering</option>
-                                <option value="11">Accounting</option>
-                                <option value="12">Businness Development</option>
+                            <label for="Udepartment">Department</label>
+                            <select id="Udepartment" name="Udepartment" class="form-control" type="text">
+
                             </select>
                             <label for="email">email</label>
                             <input id="Uemail" name="email" class="form-control" type=" text">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id="update" type="button" class="btn btn-primary">Save changes</button>
-                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="update" type="button" class="btn btn-success">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -280,17 +228,38 @@
                             <input id="UdepName" name="UdepName" class="form-control" type="text">
                             <label for="UdepLocation">Location</label>
                             <select id="UdepLocation" name="UdepLocation" class="form-control" type="text">
-                                <option value="1">London</option>
-                                <option value="2">New York</option>
-                                <option value="3">Paris</option>
-                                <option value="4">Munich</option>
-                                <option value="5">Rome</option>
+
                             </select>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id="deleteDepBtn" type="button" class="btn btn-primary">Delete department</button>
-                        <button id="updateDepBtn" type="button" class="btn btn-primary">Create department</button>
+                        <button id="deleteDepBtn" type="button" class="btn btn-danger mr-auto">Delete
+                            department</button>
+                        <button id="updateDepBtn" type="button" class="btn btn-success">Update department</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="updateLoc" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="id" class="modal-title">Edit Location</h5>
+                        <span id="locID"></span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <label for="ULocName">Name</label>
+                            <input id="ULocName" name="ULocName" class="form-control" type="text">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteLocBtn" type="button" class="btn btn-danger mr-auto">Delete Location</button>
+                        <button id="updateLocBtn" type="button" class="btn btn-success">Update Location</button>
                     </div>
                 </div>
             </div>
@@ -308,8 +277,56 @@
                         <p>Are you sure you want to delete this contact?</p>
                     </div>
                     <div class="modal-footer">
-                        <button id="deleteBtn" type="button" class="btn btn-primary">Delete</button>
-                        <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button id="deleteBtn" type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="deleteDepMod" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Department </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deleting this department will also delete the employees assigned to it.</p>
+                        <p>Are you sure you want to delete <span id="deleteDepName"></span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteDep" type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="deleteLocMod" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete <span class="deleteLocName"></span> </h5><span
+                            class="locID"></span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deleting this department will also delete the department assigned to it.</p>
+                        <p>Are you sure you want to delete <span class="deleteLocName"></span>'s department?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteLoc" type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p id="message" class="my-3"></p>
                     </div>
                 </div>
             </div>

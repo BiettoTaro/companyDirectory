@@ -38,7 +38,7 @@
 
     $query = "UPDATE department
               SET name = '$name',
-                  locationID = $locID,
+                  locationID = $locID
               WHERE id = ". $id;
 
                   

@@ -34,7 +34,7 @@
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
     //loop through REQUEST to retrieve multiple IDs??
-	$query = 'SELECT p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location 
+	$query = 'SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, l.name as location 
 	            FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID)
                  WHERE LOWER(p.lastName) LIKE LOWER("%' . $_REQUEST['name'] . '%")
                  OR LOWER(p.firstName) LIKE LOWER("%' . $_REQUEST['name'] . '%")
