@@ -5,7 +5,7 @@ body {
 .jumbotron {
     background: url('../../office.jpg') center;
     background-size: cover;
-    height: 60vh;
+    height: 40vh;
 }
 
 .button {
@@ -30,12 +30,15 @@ body {
     color: white;
 }
 
-.navbar-nav .dropdown-menu {
-    position: absolute;
-    width: 100px;
-    float: left;
+.dropdown-menu {
+    white-space: nowrap;
 }
 
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    width: 250px;
+    float: left;
+}
 
 .dropdown-item:hover,
 .dropdown-item:focus {
@@ -55,6 +58,12 @@ body {
     text-decoration: none;
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
+
 .fixed-top.scrolled {
     background-color: #6aa1d9;
     transition: backround-color;
@@ -67,7 +76,6 @@ body {
 }
 
 #search {
-
     position: relative;
     bottom: 6.5vh;
     z-index: 1;
@@ -88,11 +96,18 @@ body {
     border-color: #6aa1d9;
 }
 
+.btn-danger {
+    background-color: #e35b5b;
+}
 
+.btn-success {
+    background-color: #6caf5a;
+}
 
 .locID,
 .depID,
 #depID,
-#locID {
+#locID,
+.id {
     display: none;
 }

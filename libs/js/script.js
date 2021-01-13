@@ -4,8 +4,8 @@ const card = (id, firstName, lastName, location, department, email) => {
     return (`
 <div class=" card m-1  col-xl-2 shadow " style="width: 18rem;">
                 <div class="row justify-content-between">
-                    <span class="deleteBtn"><i class="fas fa-trash-alt "></i></span>
-                    <span class="editBtn"><i id="" class="fas fa-edit"></i></span>
+                    <span class="deleteBtn m-2"><i class="fas fa-trash-alt "></i></span>
+                    <span class="editBtn m-2"><i id="" class="fas fa-edit"></i></span>
                 </div>
                 <div class="card-body">
                     <p class="id">${id}</p>
@@ -13,7 +13,7 @@ const card = (id, firstName, lastName, location, department, email) => {
                     <p class="location card-text">${location}
                     </p>
                     <p class="department">${department}</p>
-                    <a href="" class="email" style="font-size : .75rem; ">${email}</a>
+                    <a href="mailto:${email}" class="email" style="font-size : .75rem; ">${email}</a>
                 </div>
             </div>`);
 };
@@ -24,7 +24,7 @@ const edit = () => (
         $('#id').html($(event.currentTarget).parent().siblings().find('.id').html());
         $('#UfirstName').val($(event.currentTarget).parent().siblings().find('.first').html());
         $('#UlastName').val($(event.currentTarget).parent().siblings().find('.last').html());
-        $('#Udepartment option').attr('selected', function () {
+        $('#Udepartment option').attr('selected', function() {
             $(this).prop("selected", false)
 
             if ($(this).text() == $(event.currentTarget).parent().siblings().find('.department').text()) {
@@ -34,11 +34,11 @@ const edit = () => (
         $('#Uemail').val($(event.currentTarget).parent().siblings().find('.email').html());
 
         $('#edit').show()
-        $('.close, #close').click(function () {
+        $('.close, #close').click(function() {
             $('#edit').hide();
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == $('#edit')) {
                 $('#edit').hide();
             };
@@ -51,11 +51,11 @@ const deletePersonnel = () => (
         $('#deleteID').html($(event.currentTarget).parent().siblings().find('.id').html());
 
         $('#delete').show()
-        $('.close, .cancel').click(function () {
+        $('.close, .cancel').click(function() {
             $('#delete').hide();
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == $('#delete')) {
                 $('#delete').hide();
             };
@@ -65,47 +65,47 @@ const deletePersonnel = () => (
 
 
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         const $nav = $("#navbar");
         const $jumbo = $(".jumbotron");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $jumbo.height());
     })
 
-    $('#add').click(function () {
+    $('#add').click(function() {
         $('#create').show()
-        $('.close').click(function () {
+        $('.close').click(function() {
             $('#create').hide();
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == $('#create')) {
                 $('#create').hide();
             };
         };
     })
 
-    $('#addDep').click(function () {
+    $('#addDep').click(function() {
         $('#createDep').show()
-        $('.close').click(function () {
+        $('.close').click(function() {
             $('#createDep').hide();
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == $('#createDep')) {
                 $('#createDep').hide();
             };
         };
     })
 
-    $('#addLoc').click(function () {
+    $('#addLoc').click(function() {
         $('#createLoc').show()
-        $('.close').click(function () {
+        $('.close').click(function() {
             $('#createLoc').hide();
         });
 
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == $('#createLoc')) {
                 $('#createLoc').hide();
             };
@@ -113,7 +113,7 @@ $(document).ready(function () {
     })
 
 
-    $(window).ready(function () {
+    $(window).ready(function() {
 
         $.ajax({
             url: './libs/php/getAll.php',
@@ -122,7 +122,7 @@ $(document).ready(function () {
             data: {
                 sort: $('#sortList').val()
             },
-            success: function (result) {
+            success: function(result) {
 
                 result.data.forEach(employee => {
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
             url: './libs/php/getAllDepartments.php',
             type: 'post',
             dataType: 'json',
-            success: function (result) {
+            success: function(result) {
 
                 result.data.forEach(element => {
 
@@ -157,11 +157,11 @@ $(document).ready(function () {
                 $('.editDep').click(event => {
 
                     $('#updateDep').show()
-                    $('.close').click(function () {
+                    $('.close').click(function() {
                         $('#updateDep').hide();
                     });
 
-                    window.onclick = function (event) {
+                    window.onclick = function(event) {
                         if (event.target == $('#updateDep')) {
                             $('#updateDep').hide();
                         };
@@ -176,48 +176,71 @@ $(document).ready(function () {
                         $('#updateDep').hide();
                         $('#deleteDepName').html($(event.currentTarget).html());
 
-                        $('#deleteDepMod').show()
-                        $('.close, .cancel').click(function () {
-                            $('#deleteDepMod').hide();
-                        });
-
-                        window.onclick = function (event) {
-                            if (event.target == $('#deleteDepMod')) {
-                                $('#deleteDepMod').hide();
-                            };
-                        };
-                    })
-
-                    $('#deleteDep').click(function () {
-
                         $.ajax({
-                            url: './libs/php/deleteDepartmentByID.php',
+                            url: './libs/php/departmentCount.php',
                             type: 'post',
                             dataType: 'json',
                             data: {
                                 id: $('#depID').val()
                             },
-                            success: function (result) {
-                                 
-                                if (result.data === undefined || result.data.length == 0) {
-                                    $('#deleteDepMod').hide();
-                                    $('#message').text('You can\'t delete departments with more than 3 employee assigned to it!');
-                                    $('#success').show();
-                
-                                    location.reload();
+                            success: function(result) {
+                                const count = result.data[0];
 
+
+                                if (Object.values(count) > 3) {
+                                    $('#deleteDepMod').hide();
+                                    $('#message').text(`You can't delete departments with ${Object.values(count)} employees assigned to it!`);
+                                    $('#success').show();
+                                    $('.close').click(function() {
+                                        $('#success').hide();
+                                    });
+                                } else {
+                                    $('#deleteDepMod').show()
+                                    $('.close, .cancel').click(function() {
+                                        $('#deleteDepMod').hide();
+                                    });
+
+                                    window.onclick = function(event) {
+                                        if (event.target == $('#deleteDepMod')) {
+                                            $('#deleteDepMod').hide();
+                                        };
+                                    };
                                 }
                             }
 
                         })
+
                     })
-
-
 
                 });
 
+                $('#deleteDep').click(function() {
+                    console.log($('#depID').val())
+                    $.ajax({
+                        url: './libs/php/deleteDepartmentByID.php',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            id: $('#depID').val()
+                        },
+                        success: function(result) {
 
-                $('#updateDepBtn').click(function () {
+
+                            if (result.data === undefined || result.data.length == 0) {
+                                $('#deleteDepMod').hide();
+                                $('#message').text('Department deleted successfully!');
+                                $('#success').show();
+
+                                location.reload();
+
+                            }
+                        }
+
+                    })
+                })
+
+
+                $('#updateDepBtn').click(function() {
 
 
                     $.ajax({
@@ -229,13 +252,13 @@ $(document).ready(function () {
                             locID: $('#UdepLocation').val(),
                             id: $('#depID').val()
                         },
-                        success: function (result) {
+                        success: function(result) {
 
                             $('#updateDep').hide();
-                                    $('#message').text('Department updated successfully!');
-                                    $('#success').show();
-                
-                                    location.reload();
+                            $('#message').text('Department updated successfully!');
+                            $('#success').show();
+
+                            location.reload();
                         }
 
                     })
@@ -247,7 +270,7 @@ $(document).ready(function () {
             url: './libs/php/getAllLocations.php',
             type: 'post',
             dataType: 'json',
-            success: function (result) {
+            success: function(result) {
 
                 result.data.forEach(element => {
 
@@ -260,11 +283,11 @@ $(document).ready(function () {
                 $('.editLoc').click(event => {
 
                     $('#updateLoc').show()
-                    $('.close').click(function () {
+                    $('.close').click(function() {
                         $('#updateLoc').hide();
                     });
 
-                    window.onclick = function (event) {
+                    window.onclick = function(event) {
                         if (event.target == $('#updateLoc')) {
                             $('#updateLoc').hide();
                         };
@@ -272,32 +295,49 @@ $(document).ready(function () {
 
                     $('#ULocName').val($(event.currentTarget).html());
                     $('#locID').html($(event.currentTarget).prev().html())
+                    $('.deleteLocName').html($(event.currentTarget).html());
 
+                });
 
+                $('#deleteLocBtn').click(function() {
+                    $('#updateLoc').hide();
 
+                    $.ajax({
+                        url: './libs/php/locationCount.php',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            id: $('#locID').html()
+                        },
+                        success: function(result) {
+                            const count = result.data[0];
 
-                    $('#deleteLocBtn').click(function () {
+                            if (Object.values(count) > 0) {
+                                $('#message').text(`You can't delete locations with ${Object.values(count)} departments assigned to it!`);
+                                $('#success').show();
+                                $('.close').click(function() {
+                                    $('#success').hide();
+                                });
+                            } else {
+                                $('#deleteLocMod').show()
+                                $('.close, .cancel').click(function() {
 
-                        $('.deleteLocName').html($(event.currentTarget).html());
-                        $('#updateLoc').hide();
+                                    $('#deleteLocMod').hide();
+                                });
 
-
-                        $('#deleteLocMod').show()
-                        $('.close, .cancel').click(function () {
-                            
-$('#deleteLocMod').hide();
-                        });
-
-                        window.onclick = function (event) {
-                            if (event.target == $('#deleteLocMod')) {
-                                $('#deleteLocMod').hide();
-                            };
-                        };
-
+                                window.onclick = function(event) {
+                                    if (event.target == $('#deleteLocMod')) {
+                                        $('#deleteLocMod').hide();
+                                    };
+                                };
+                            }
+                        }
 
                     })
-                });
-                $('#updateLocBtn').click(function () {
+
+                })
+
+                $('#updateLocBtn').click(function() {
 
                     $.ajax({
                         url: './libs/php/updateLocation.php',
@@ -307,17 +347,17 @@ $('#deleteLocMod').hide();
                             name: $('#ULocName').val(),
                             id: $('#locID').html()
                         },
-                        success: function () {
+                        success: function() {
                             $('#updateLoc').hide();
                             $('#message').text('Location updated successfully!');
                             $('#success').show();
-        
+
                             location.reload();
                         }
                     });
                 })
 
-                $('#deleteLoc').click(function () {
+                $('#deleteLoc').click(function() {
 
                     $.ajax({
                         url: './libs/php/deleteLocationByID.php',
@@ -326,21 +366,21 @@ $('#deleteLocMod').hide();
                         data: {
                             id: $('#locID').html()
                         },
-                        success: function (result) {
+                        success: function(result) {
 
                             if (result.data === undefined || result.data.length == 0) {
 
                                 $('#deleteLocMod').hide();
 
-                            $('#message').text('You can\'t delete locations with departments assigned to it');
-                            $('#success').show();
-        
-                            location.reload();
+                                $('#message').text('Location deleted successfully!');
+                                $('#success').show();
+
+                                location.reload();
 
                             }
                         },
 
-                        error: function (jqXHR, textStatus, errorThrown) {
+                        error: function(jqXHR, textStatus, errorThrown) {
                             // your error code
                             console.warn(jqXHR.responseText)
                             console.log(errorThrown);
@@ -357,7 +397,7 @@ $('#deleteLocMod').hide();
 
     });
 
-    $('#createBtn').click(function () {
+    $('#createBtn').click(function() {
         $.ajax({
             url: './libs/php/insertPersonnel.php',
             type: 'post',
@@ -370,20 +410,20 @@ $('#deleteLocMod').hide();
                 email: $('#Cemail').val(),
 
             },
-            success: function (result) {
+            success: function(result) {
 
                 $('#create').hide();
                 if (result.status.code == 200) {
 
-                            $('#message').text('Employee created successfully!');
-                            $('#success').show();
-        
-                            location.reload();
+                    $('#message').text('Employee created successfully!');
+                    $('#success').show();
+
+                    location.reload();
                 }
 
 
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 // your error code
                 console.warn(jqXHR.responseText)
                 console.log(errorThrown);
@@ -393,7 +433,7 @@ $('#deleteLocMod').hide();
         });
     });
 
-    $('#createDepBtn').click(function () {
+    $('#createDepBtn').click(function() {
         $.ajax({
             url: './libs/php/insertDepartment.php',
             type: 'post',
@@ -402,7 +442,7 @@ $('#deleteLocMod').hide();
                 name: $('#depName').val(),
                 locationID: $('#depLocation').val()
             },
-            success: function (result) {
+            success: function(result) {
 
                 $('#createDep').hide();
                 if (result.status.code == 200) {
@@ -418,7 +458,7 @@ $('#deleteLocMod').hide();
         });
     });
 
-    $('#createLocBtn').click(function () {
+    $('#createLocBtn').click(function() {
         $.ajax({
             url: './libs/php/insertLocation.php',
             type: 'post',
@@ -426,7 +466,7 @@ $('#deleteLocMod').hide();
             data: {
                 name: $('#locName').val(),
             },
-            success: function (result) {
+            success: function(result) {
 
                 $('#createLoc').hide();
                 if (result.status.code == 200) {
@@ -443,7 +483,7 @@ $('#deleteLocMod').hide();
 
 
 
-    $('#update').click(function () {
+    $('#update').click(function() {
         $.ajax({
             url: './libs/php/updatePersonnel.php',
             type: 'post',
@@ -455,15 +495,15 @@ $('#deleteLocMod').hide();
                 email: $('#Uemail').val(),
                 id: $('#id').text()
             },
-            success: function (result) {
+            success: function(result) {
                 $('#edit').hide();
                 $('#message').text('Employee information updated successfully!');
                 $('#success').show();
-                
+
                 location.reload();
 
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 // your error code
                 console.warn(jqXHR.responseText)
                 console.log(errorThrown);
@@ -473,7 +513,7 @@ $('#deleteLocMod').hide();
         });
     });
 
-    $('#deleteBtn').click(function () {
+    $('#deleteBtn').click(function() {
 
         $.ajax({
             url: './libs/php/deletePersonnel.php',
@@ -482,7 +522,7 @@ $('#deleteLocMod').hide();
             data: {
                 id: $('#deleteID').text()
             },
-            success: function (result) {
+            success: function(result) {
 
                 if (result.status.code == 200) {
                     $('#delete').hide();
@@ -494,7 +534,7 @@ $('#deleteLocMod').hide();
 
 
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 // your error code
                 console.warn(jqXHR.responseText)
                 console.log(errorThrown);
@@ -506,7 +546,7 @@ $('#deleteLocMod').hide();
     })
 
 
-    $('#sortMenu').children().click(function (event) {
+    $('#sortMenu').children().click(function(event) {
 
         $.ajax({
             url: './libs/php/sortAll.php',
@@ -515,7 +555,7 @@ $('#deleteLocMod').hide();
             data: {
                 sort: $(event.currentTarget).attr('data-value')
             },
-            success: function (result) {
+            success: function(result) {
                 if ($('#main')) {
                     $('#main').html('');
                 }
@@ -528,7 +568,7 @@ $('#deleteLocMod').hide();
                 deletePersonnel()
 
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 // your error code
                 console.warn(jqXHR.responseText)
                 console.log(errorThrown);
@@ -540,7 +580,7 @@ $('#deleteLocMod').hide();
     })
 
 
-    $('#nameSearch').keyup(function () {
+    $('#nameSearch').keyup(function() {
 
         $.ajax({
             url: './libs/php/getPersonnelByName.php',
@@ -549,7 +589,7 @@ $('#deleteLocMod').hide();
             data: {
                 name: $('#nameSearch').val()
             },
-            success: function (result) {
+            success: function(result) {
 
                 if ($('#main')) {
                     $('#main').html('');

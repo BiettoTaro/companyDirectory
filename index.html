@@ -8,8 +8,7 @@
     <link rel="shortcut icon" type="image/ico" sizes="32x32" href="./favicon_io CD/favicon.ico">
     <link rel="stylesheet" href="./libs/vendors/bootstrap/bootstrap.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Roboto+Slab:wght@200;400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./libs/css/style.css">
     <title>Company Directory</title>
 </head>
@@ -20,20 +19,17 @@
             <header class="col-12">
                 <div class="jumbotron jumbotron-fluid p-0">
                     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top flex-row-reverse">
-                            <span id="add" class=" text-white"><i class="fas fa-plus"></i></span>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span id="add" class=" text-white"><i class="fas fa-plus"></i></span>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon "></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarContent">
                             <ul class="navbar-nav mr-auto pr-2">
                                 <li class="nav-item dropdown">
-                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
-                                        href="#" id="dropdownDep" role="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
+                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline" href="#" id="dropdownDep" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Department
                                     </button>
-                                    <div class="dropdown-menu ml-auto" aria-labelledby="dropdownDep">
+                                    <div class="dropdown-menu ml-auto scrollable-menu" aria-labelledby="dropdownDep">
                                         <a id="addDep" class="dropdown-item text-white" href="#">Add</a>
                                         <div class="dropdown-divider"></div>
                                         <ul id="depMenu" class="menu">
@@ -41,14 +37,12 @@
                                         </ul>
                                     </div>
                                 </li>
-                                                                
+
                                 <li class="nav-item dropdown">
-                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline"
-                                        href="#" id="dropdownLoc" role="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
+                                    <button class="button nav-link nav-item dropdown-toggle text-white d-inline" href="#" id="dropdownLoc" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Location
                                     </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownLoc">
+                                    <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownLoc">
                                         <a id="addLoc" class="dropdown-item text-white" href="#">Add</a>
                                         <div class="dropdown-divider"></div>
                                         <ul id="locMenu" class="menu"></ul>
@@ -71,13 +65,10 @@
                 <div class="row ">
                     <section id="search" class="col-12 d-flex justify-content-center">
                         <form action="#">
-                            <input id="nameSearch" class="form-control searchbar shadow-lg" type="text"
-                                placeholder="Search name" name="search">
+                            <input id="nameSearch" class="form-control searchbar shadow-lg" type="text" placeholder="Search name" name="search">
                         </form>
                         <div class="dropdown">
-                            <button id="sort" class="btn btn-primary fas fa-sort-amount-down dropdown-toggle"
-                                type="button" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                            <button id="sort" class="btn btn-primary fas fa-sort-amount-down dropdown-toggle" type="button" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             </button>
                             <div id="sortMenu" class="dropdown-menu" aria-labelledby="dropdownSort">
@@ -85,8 +76,7 @@
                                     Name</a>
                                 <a id="sortByLastName" class="dropdown-item" href="#" data-value="p.lastName">Last
                                     Name</a>
-                                <a id="sortByDepartment" class="dropdown-item" href="#"
-                                    data-value="department">Department</a>
+                                <a id="sortByDepartment" class="dropdown-item" href="#" data-value="department">Department</a>
                                 <a id="sortByLocation" class="dropdown-item" href="#" data-value="location">Location</a>
                             </div>
 
@@ -107,7 +97,7 @@
         </div>
         </div>
         <div id="create" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Create contact</h5>
@@ -138,7 +128,7 @@
             </div>
         </div>
         <div id="createDep" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Add department</h5>
@@ -163,7 +153,7 @@
             </div>
         </div>
         <div id="createLoc" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Add department</h5>
@@ -184,7 +174,7 @@
             </div>
         </div>
         <div id="edit" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Edit contact</h5>
@@ -213,7 +203,7 @@
             </div>
         </div>
         <div id="updateDep" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Edit department</h5>
@@ -241,7 +231,7 @@
             </div>
         </div>
         <div id="updateLoc" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="id" class="modal-title">Edit Location</h5>
@@ -265,7 +255,7 @@
             </div>
         </div>
         <div id="delete" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Delete contact (<span id="deleteID"></span>)</h5>
@@ -283,7 +273,7 @@
             </div>
         </div>
         <div id="deleteDepMod" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Delete Department </h5>
@@ -302,18 +292,17 @@
             </div>
         </div>
         <div id="deleteLocMod" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Delete <span class="deleteLocName"></span> </h5><span
-                            class="locID"></span>
+                        <h5 class="modal-title">Delete <span class="deleteLocName"></span> </h5><span class="locID"></span>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Deleting this department will also delete the department assigned to it.</p>
-                        <p>Are you sure you want to delete <span class="deleteLocName"></span>'s department?</p>
+                        <p>Deleting this location will also delete the department assigned to it.</p>
+                        <p>Are you sure you want to delete <span class="deleteLocName"></span>'s location?</p>
                     </div>
                     <div class="modal-footer">
                         <button id="deleteLoc" type="button" class="btn btn-danger">Delete</button>
@@ -323,10 +312,14 @@
         </div>
 
         <div id="success" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <p id="message" class="my-3"></p>
+
                     </div>
                 </div>
             </div>

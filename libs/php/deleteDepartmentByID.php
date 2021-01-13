@@ -34,13 +34,9 @@
 	}	
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
-$id = $_REQUEST['id'];
+    $id = $_REQUEST['id'];
 
-	$query = "DELETE from department WHERE id IN (SELECT departmentID
-	FROM personnel
-	WHERE departmentID = $id                               
-	GROUP BY departmentID
-	having count(departmentID) < 3)";
+	$query = "DELETE from department WHERE id = $id";
 
 	$result = $conn->query($query);
 	
@@ -58,6 +54,8 @@ $id = $_REQUEST['id'];
 		exit;
 
 	}
+
+	
 	
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
